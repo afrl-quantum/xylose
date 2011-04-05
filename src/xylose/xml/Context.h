@@ -55,7 +55,7 @@ namespace xylose {
       /* TYPEDEFS */
       /** The comparator for the Context::set type (for maintaining order). */
       struct Comparator {
-        bool operator()(const Context & lhs, const Context & rhs) {
+        bool operator()(const Context & lhs, const Context & rhs) const {
           return lhs.node < rhs.node;
         }
       };
