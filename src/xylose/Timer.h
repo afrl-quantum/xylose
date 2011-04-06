@@ -28,6 +28,11 @@
  * Questions? Contact Spencer Olson (olsonse@umich.edu) 
  */
 
+/** \example timer/testTimer.cpp
+ * Very simple example of using the Wall-clock/CPU-clock timing (xylose::Timer)
+ * facility class.
+ */
+
 #ifndef xylose_Timer_h
 #define xylose_Timer_h
 

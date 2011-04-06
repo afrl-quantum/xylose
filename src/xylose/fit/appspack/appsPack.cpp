@@ -23,6 +23,16 @@
  * Main code for threaded APPSPack executor binary.  
  */
 
+/** \example fit/appspack/file-io/prob-file-io.py
+ * Example merit function using file-io.
+ * \include fit/appspack/file-io/input.xml
+ */
+
+/** \example fit/appspack/pipe-io/prob-pipe-io.py
+ * Example merit function using pipe-io.
+ * \include fit/appspack/pipe-io/input.xml
+ */
+
 #include <xylose/fit/appspack/Input.hpp>
 #include <xylose/fit/appspack/ThreadedExecutor.hpp> ///< Provides user-defined custom executor
 #include <xylose/fit/ExecFunc.hpp>

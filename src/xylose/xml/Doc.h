@@ -20,6 +20,25 @@
  -----------------------------------------------------------------------------*/
 
 
+/** \example xml/simple.cpp
+ * Demonstration of opening up an xml document, extending it (adding xml nodes)
+ * and then saving the document to file (stdin in this case).
+ *
+ * These are the input xml files for this test case:
+ * \include xml/file.xml
+ * \include xml/file-2.xml
+ */
+
+/** \example xml/testXML.cpp
+ * Demonstration of more complicated xml node parsing.  In this example, we use
+ * the runtime::physical::quantity parser, as defined by
+ * xylose::xml::parse_item( runtime::physical::Quantity &,
+                            const xylose::xml::Context & x )
+ * defined in.
+ *
+ * This is the input xml file for this test case:
+ * \include xml/file.xml
+ */
 
 #ifndef xylose_xml_Doc_h
 #define xylose_xml_Doc_h

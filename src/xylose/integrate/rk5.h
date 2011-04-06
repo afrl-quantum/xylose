@@ -53,6 +53,11 @@
  * Copyright 2005-2009 Spencer E. Olson
  */
 
+/** \example integrate/rk/5th-order-adaptive/testrk.cpp
+ * Example for using the xylose::integrate::RK class with fifth order accuracy
+ * with adaptive time stepping.
+ */
+
 #ifndef xylose_integrate_rk5_h
 #define xylose_integrate_rk5_h
 

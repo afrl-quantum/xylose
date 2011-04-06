@@ -28,6 +28,9 @@
 
 namespace xylose {
   namespace xml {
+    /** XML parser for the runtime::physical::quantity using
+     * runtime::physical::calc::Driver for the heavy lifting.
+     */
     inline void parse_item( runtime::physical::Quantity & out,
                             const Context & x) {
       using runtime::physical::calc::Driver;

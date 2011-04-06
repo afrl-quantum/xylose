@@ -53,6 +53,10 @@
  * Copyright 2005-2009 Spencer E. Olson
  */
 
+/** \example integrate/rk/4th-order/testrk.cpp
+ * Example for using the xylose::integrate::RK class with fourth order accuracy.
+ */
+
 #ifndef xylose_integrate_rk4_h
 #define xylose_integrate_rk4_h
 

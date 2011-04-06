@@ -27,6 +27,12 @@
   \sa \ref pageCustomize_executor 
 */
 
+/** \example src/xylose/fit/appspack/appsPack.cpp
+ * The stand-alone threaded appspack driver also serves as a great example for
+ * using the xylose::fit::appspack::ThreadedExecutor.
+ */
+
+
 #ifndef xylose_fit_appspack_ThreadedExecutor_hpp
 #define xylose_fit_appspack_ThreadedExecutor_hpp
 

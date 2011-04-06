@@ -30,6 +30,11 @@
 namespace xylose {
   namespace xml {
 
+    /** XML Parser for a set of similar xml nodes, each parsed as type T.
+     * This parser works for any xylose::xml::Context for which an xpath query
+     * "child::node()" returns the set of nodes to parse.  Each child node that
+     * cannot be parsed as type T is silently ignored.
+     */
     template < typename T >
     inline void parse_item( std::vector<T> & out, const Context & x ) {
       /* first make sure the vector is clean */

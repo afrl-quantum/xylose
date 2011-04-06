@@ -19,6 +19,19 @@
  *                                                                             *
  -----------------------------------------------------------------------------*/
 
+/** \example nsort/basic/testNSort.cpp
+ * Example of sorting using various xylose::nsort::map classes.  This example also
+ * provides a set of timing tests to show the performance of NSort vs various
+ * partition sorts (e.g. a partial quicksort).
+ */
+
+/** \example nsort/grid/sortIntoGrid.cpp
+ * Example of sorting using various the xylose::nsort::map ::uniform_grid class.
+ * This demonstrates how sorting particles onto a grid in three dimensions can
+ * be done with a single NSort execution.
+ */
+
+
 
 #ifndef xylose_nsort_NSort_h
 #define xylose_nsort_NSort_h

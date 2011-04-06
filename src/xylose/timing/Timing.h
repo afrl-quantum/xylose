@@ -28,6 +28,15 @@
  * Questions? Contact Spencer Olson (olsonse@umich.edu) 
  */
 
+/** \example timing/testtiming.cpp
+ * Demonstrates the xylose::timing classes.  xylose::timing classes can be
+ * thought of a way to represent the output of an arbitrary waveform generator.
+ * The voltage output of a waveform generator is typically used in experimental
+ * work to control experimental apparatus and data acquisition hardware.  While
+ * xylose::timing classes can thus be ideal for simulations that compare with k
+ * experimental timing procedures, xylose::timing can be used for specifying any
+ * type of timing control needed within a simulation.
+ */
 
 #ifndef xylose_timing_Timing_h
 #define xylose_timing_Timing_h
