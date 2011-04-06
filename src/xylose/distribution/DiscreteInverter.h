@@ -29,13 +29,17 @@
  * high enough--the definition of 'high enough' must be determined by testing.  
  */
 
-/** \example invertdistro/discrete/vector.cpp
+/** \example distribution/discrete/vector.cpp
  * Example of using the distribution inverter for a one-dimensional
  * discrete distribution that is already loaded into an array. */
 
-/** \example invertdistro/discrete/file.cpp
+/** \example distribution/discrete/file.cpp
  * Example of using the distribution inverter for a one-dimensional
  * discrete distribution that is stored in an external ascii text file. */
+
+/** \example distribution/discrete/stream.cpp
+ * Example of using the distribution inverter for a one-dimensional
+ * discrete distribution that is read from a std::istream. */
 
 
 #ifndef xylose_distribution_DiscreteInverter_h

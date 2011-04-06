@@ -37,14 +37,14 @@
  * @see SingleValued and MultiValued.
  */
 
-/** \example bin/extended_2d/generic/testbin.cpp
+/** \example binning/extended_2d/single/testbin.cpp
  * Demonstrates the binning extender so that two-dimensional data can be
  * binned.  This demonstration extends the simple SingleValued to two dimensions.  
  *
  * @see Extender,SingleValued
  */
 
-/** \example bin/extended_2d/keyed/testbin.cpp
+/** \example binning/extended_2d/multi/testbin.cpp
  * Demonstrates the binning extender so that two-dimensional data can be
  * binned.  This demonstration extends the MultiValued to two dimensions.  
  *

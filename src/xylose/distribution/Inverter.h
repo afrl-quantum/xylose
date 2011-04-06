@@ -71,13 +71,13 @@
  * Copyright 2004-2008 Spencer Olson.
  */
 
-/** \example invertdistro/1D/testdist.C
+/** \example distribution/1D/testdist.cpp
  * Example of using the distribution inverter for a one-dimensional
  * distribution. */
 
-/** \example invertdistro/2D/testdist.C
- * Example of using the distribution inverter for a two-dimensional
- * distribution. */
+/** \example distribution/1D/testpoi.cpp
+ * Example of using the distribution inverter for a one-dimensional
+ * Poissonian distribution. */
 
 #ifndef xylose_distribution_Inverter_h
 #define xylose_distribution_Inverter_h

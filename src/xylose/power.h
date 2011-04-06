@@ -82,15 +82,6 @@
  *
  */
 
-/** \example fast_pow/c/testfast_pow.c
- * fast_pow timing and tests in c. */
-
-/** \example fast_pow/fortran/testfast_pow.F
- * fast_pow timing and tests in F77.
- *
- * \include fast_pow/fortran/stdpow.c
- */
-
 #ifndef xylose_power_h
 #define xylose_power_h
 
