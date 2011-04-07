@@ -1,0 +1,8 @@
+exe testPThreadCache
+    : testPThreadCache.cpp
+      /xylose//xylose
+    : <threading>multi
+    ;
+
+install convenient-copy : testPThreadCache : <location>. ;
+

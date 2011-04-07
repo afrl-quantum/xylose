@@ -27,10 +27,22 @@
  */
 
 /** \file
- * A threaded merit evaluator--used if USE_PTHREAD is true.
+ * A simple interface to evaluate Functor type tasks in the xylose::PThreadCache
+ * facility.
  *
  * Copyright 2006-2009 Spencer Olson
  *
+ */
+
+/** \example threadcache/easier/testPThreadEval.cpp
+ * Two examples of the simpler task evaluator interface to the xylose::PThreadCache
+ * facility.
+ *
+ * The first example shows work being done in each thread that produces results
+ * that must be gathered together (a scatter-gather scheme).
+ *
+ * The second example demonstrates independent work being done in each thread
+ * that does not produced gatherable results (a scatter-only scheme).
  */
 
 #ifndef xylose_PthreadEval_h
@@ -40,13 +52,28 @@
 
 namespace xylose {
 
+  /** The basic thread functor that all others should inherit from and then
+   * override.  Inheriting classes should override as many functions from this
+   * class as needed.
+   */
   struct DefaultPThreadFunctor {
+    /** Gathering function called during a call to
+     * PThreadEval::joinAll(Gatherer&).  Inheriting classes that must gather
+     * results <u>must</u> override this function.
+     *
+     * @tparam Gatherer
+     *    The type of storage used for gathering operations.
+     *
+     * @param gatherer
+     *    The storage instance.
+     */
     template < typename Gatherer >
     void accept( Gatherer & gatherer ) const { }
   };
 
-  /** Creates merit evaluation tasks that are then executed by
-   * the default thread cache (or another if the option is given).
+  /** High level scatter-gather control of tasks executed by a cache of threads.
+   * @tparam Functor
+   *    The functor type to evaluate on each thread.
    */
   template < typename Functor >
   class PThreadEval {
@@ -136,7 +163,8 @@ namespace xylose {
      * instance's tasks are completed before returning.
      */
     inline void joinAll() {
-      joinAll( NoOpGather() );
+      NoOpGather gather;
+      joinAll( gather );
     }
 
     /** Task gatherer.  This function makes sure that all of this

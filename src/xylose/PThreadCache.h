@@ -37,6 +37,14 @@
  *
  * */
 
+/** \example threadcache/harder/testPThreadCache.cpp
+ * Examples of the direct (more complex) interface to the xylose::PThreadCache
+ * facility.
+ *
+ * The example shows work being done in each thread that produces results
+ * that must be gathered together (a scatter-gather scheme).
+ */
+
 #ifndef xylose_PThreadCache_h
 #define xylose_PThreadCache_h
 

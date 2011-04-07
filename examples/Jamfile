@@ -10,6 +10,7 @@ build-project distribution ;
 build-project fit ;
 build-project integrate ;
 build-project nsort ;
+build-project threadcache ;
 build-project timer ;
 build-project timing ;
 build-project xml ;

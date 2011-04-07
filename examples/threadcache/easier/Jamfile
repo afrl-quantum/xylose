@@ -1,0 +1,8 @@
+exe testPThreadEval
+    : testPThreadEval.cpp
+      /xylose//xylose
+    : <threading>multi
+    ;
+
+install convenient-copy : testPThreadEval : <location>. ;
+
