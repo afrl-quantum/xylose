@@ -25,6 +25,15 @@
 #include <ostream>
 
 namespace xylose {
+
+  /** Class the represent three unique dimensions.
+   * The primary utility of the Dimensions<...> classes is to provide a
+   * mechanism to create template metafunctions that depend on the number and
+   * directions of one, two, or three dimensional coordinates.
+   *
+   * @see xylose::nsort::map::pivot< Dimensions< dir0, dir1, _dir > > for
+   * example usage.
+   */
   template < unsigned int _dir0,
              unsigned int _dir1 = _dir0,
              unsigned int _dir2 = _dir0 >
@@ -38,6 +47,14 @@ namespace xylose {
   };
 
 
+  /** Class the represent two unique dimensions.
+   * The primary utility of the Dimensions<...> classes is to provide a
+   * mechanism to create template metafunctions that depend on the number and
+   * directions of one, two, or three dimensional coordinates.
+   *
+   * @see xylose::nsort::map::pivot< Dimensions< dir0, _dir > > for
+   * example usage.
+   */
   template < unsigned int _dir0,
              unsigned int _dir1 >
   struct Dimensions<_dir0,_dir1,_dir0> {
@@ -48,6 +65,15 @@ namespace xylose {
     typedef Dimensions<_dir1,_dir0> reverse;
   };
 
+
+  /** Class the represent a one dimensional system.
+   * The primary utility of the Dimensions<...> classes is to provide a
+   * mechanism to create template metafunctions that depend on the number and
+   * directions of one, two, or three dimensional coordinates.
+   *
+   * @see xylose::nsort::map::pivot< Dimensions< _dir > > for
+   * example usage.
+   */
   template < unsigned int _dir0 >
   struct Dimensions<_dir0,_dir0,_dir0> {
     static const unsigned int ndims = 1u;
@@ -58,6 +84,7 @@ namespace xylose {
 
 
 
+  /** Stream output to show a representation of a three dimensional system. */
   template <unsigned int dir0, unsigned int dir1, unsigned int dir2>
   std::ostream & operator<< (std::ostream & out, const Dimensions<dir0,dir1,dir2> & dims) {
     out << dims.ndims << "D-{"
@@ -67,6 +94,7 @@ namespace xylose {
     return out;
   }
 
+  /** Stream output to show a representation of a two dimensional system. */
   template <unsigned int dir0, unsigned int dir1>
   std::ostream & operator<< (std::ostream & out, const Dimensions<dir0,dir1> & dims) {
     out << dims.ndims << "D-{"
@@ -75,6 +103,7 @@ namespace xylose {
     return out;
   }
 
+  /** Stream output to show a representation of a one dimensional system. */
   template <unsigned int dir0>
   std::ostream & operator<< (std::ostream & out, const Dimensions<dir0> & dims) {
     out << dims.ndims << "D-{"

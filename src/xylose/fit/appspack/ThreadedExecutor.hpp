@@ -47,9 +47,8 @@ namespace xylose {
 
       using xylose::pthreadCache;
 
-      //! Custom executor class derived from APPSPACK::Executor::Interface
-      /*!
-        \sa \ref pageCustomize_executor 
+      /** Custom multi-threaded executor class derived from APPSPACK::Executor::Interface
+       * @see pageCustomize_executor 
        */
       template < typename MinFunc >
       class ThreadedExecutor : public APPSPACK::Executor::Interface {

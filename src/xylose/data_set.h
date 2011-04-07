@@ -35,6 +35,19 @@
 #include <ostream>
 
 namespace xylose {
+
+  /** Arbitrarily typed representation of an single node in a list of XML data
+   * nodes.  The data node is a single XML node with <code>x=</code> and
+   * <code>y=</code> attributes corresponding to the x and y values of the two
+   * dimensional data.
+   *
+   * The XML data node is parsed by
+   * parse_item(data_point<A,B> &, const xml::Context &).
+   * Generally, the user does not need to explicitly call
+   * xylose::xml::Context.parse<data_point>().  The appropriate functions will
+   * be called when instead parsing the entire data set such as
+   * xylose::xml::Context.parse<data_set>().
+   */
   template <class A, class B>
   struct data_point : std::pair<A,B> {
     typedef std::pair<A,B> super;
@@ -42,14 +55,24 @@ namespace xylose {
     data_point(const A& a, const B& b) : super(a,b) {}
   };
 
+
+  /** Arbitrarily typed representation of a set of XML data nodes.
+   *
+   * Generally, the user asks for the data set to be parsed in entirety by
+   * calling xylose::xml::Context.parse<data_set>().
+   */
   template <class A, class B>
   struct data_set : std::map<A,B> {};
 
+
+  /** Output stream operator for a data_point to XML format. */
   template <class A, class B>
   std::ostream & operator<<(std::ostream & out, const data_point<A,B> & p) {
     return out << "<data x=\'" << p.first << "\' y=\'" << p.second << "\'/>";
   }
 
+
+  /** Output stream operator for an entire data_set to XML format. */
   template<class A, class B>
   std::ostream & operator<<(std::ostream & out, const data_set<A,B> & data) {
     out << "<dataset>\n";
@@ -59,6 +82,9 @@ namespace xylose {
     return out << "</dataset>";
   }
 
+  /** Convert an entire set of physical data data (such as in runtime::physical
+   * of the \ref physical_cpp "physical c++" package) to a set of data of
+   * another type. */
   template <class C, class D, class InIter, class UnitsPair>
   data_set<C,D> convert_data_set( InIter i, const InIter & f,
                                   const UnitsPair & units) {
@@ -73,6 +99,8 @@ namespace xylose {
     return retval;
   }
 
+
+  /** Actual parsing function for a XML data_item. */
   template <class A, class B>
   inline void parse_item(data_point<A,B> & out, const xml::Context & x) {
     A a = x.query<A>("@x");
@@ -81,6 +109,7 @@ namespace xylose {
   }
 
 
+  /** Actual parsing function for a XML data_set. */
   template <class A, class B>
   inline void parse_item(data_set<A,B> & out, const xml::Context & x) {
     A xscale = x.query<A>("@xscale");

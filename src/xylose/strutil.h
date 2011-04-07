@@ -44,6 +44,7 @@
 
 namespace xylose {
 
+  /** Error exception class for failed string operations. */
   struct string_error : std::runtime_error {
     typedef std::runtime_error super;
     string_error(const std::string & s) : super(s) {}

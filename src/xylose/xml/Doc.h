@@ -22,7 +22,8 @@
 
 /** \example xml/simple.cpp
  * Demonstration of opening up an xml document, extending it (adding xml nodes)
- * and then saving the document to file (stdin in this case).
+ * and then saving the document to file (stdin in this case).  Please see
+ * \ref xml/testXML.cpp "xml/testXML.cpp" for a more complicated example.
  *
  * These are the input xml files for this test case:
  * \include xml/file.xml

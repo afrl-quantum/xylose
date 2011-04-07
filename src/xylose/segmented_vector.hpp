@@ -288,8 +288,14 @@ namespace xylose {
     a.swap( b );
   }
 
+
+  /** Generate an STL compatible container template (class<typename T, typename
+   * Alloc>).
+   */
   template< unsigned int kSegmentSize >
   struct make_stl_container {
+
+    /** The result of the xylose::make_stl_container templaet meta-function. */
     template< typename T, 
               typename Alloc = std::allocator< int > >
     struct type : segmented_vector<T, kSegmentSize, Alloc> {
@@ -311,6 +317,7 @@ namespace xylose {
 
 
   //------------------------------------------------------------------------------
+  /** \cond XYLOSE_DETAIL_DOC */
   namespace detail {
     
     // null destruction operation
@@ -322,6 +329,7 @@ namespace xylose {
     };
 
   } // namespace detail
+  /** \endcond XYLOSE_DETAIL_DOC */
 
   //------------------------------------------------------------------------------
   template< typename T, unsigned int kSegmentSize, typename Alloc >

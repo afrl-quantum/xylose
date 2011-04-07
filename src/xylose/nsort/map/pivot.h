@@ -37,7 +37,8 @@ namespace xylose {
         struct pivot {};
       }
 
-      /** maps x<pivot to 0 and x>= pivot to 1. */
+      /** \class xylose::nsort::map::pivot
+       * maps x<pivot to 0 and x>= pivot to 1. */
       template < typename dimensions = Dimensions<0u,1u,2u> >
       struct pivot;
 
@@ -51,6 +52,13 @@ namespace xylose {
         typedef map::tag::pivot< dimensions > tag;
         typedef void super;
 
+        /** Convert depth of pivot calculation to coordinate index.
+         * The higher dimension pivot classes inherit/call lower dimension
+         * classes such that xylose::nsort::map::pivot uses a recursive
+         * implementation.  This template meta-function converts the depth in
+         * this recursive implementation to the direction corresponding to that
+         * depth. 
+         */
         template <unsigned int _depth>
         struct depth {
           typedef detail::pivot_depth< dimensions, _depth > to;
@@ -86,6 +94,13 @@ namespace xylose {
         typedef Dimensions<dir0,_dir> dimensions;
         typedef map::tag::pivot< dimensions > tag;
 
+        /** Convert depth of pivot calculation to coordinate index.
+         * The higher dimension pivot classes inherit/call lower dimension
+         * classes such that xylose::nsort::map::pivot uses a recursive
+         * implementation.  This template meta-function converts the depth in
+         * this recursive implementation to the direction corresponding to that
+         * depth. 
+         */
         template <unsigned int _depth>
         struct depth {
           typedef detail::pivot_depth< dimensions, _depth > to;
@@ -120,6 +135,13 @@ namespace xylose {
         typedef Dimensions<dir0,dir1,_dir> dimensions;
         typedef map::tag::pivot< dimensions > tag;
 
+        /** Convert depth of pivot calculation to coordinate index.
+         * The higher dimension pivot classes inherit/call lower dimension
+         * classes such that xylose::nsort::map::pivot uses a recursive
+         * implementation.  This template meta-function converts the depth in
+         * this recursive implementation to the direction corresponding to that
+         * depth. 
+         */
         template <unsigned int _depth>
         struct depth {
           typedef detail::pivot_depth< dimensions, _depth > to;

@@ -48,7 +48,7 @@
 namespace xylose {
   namespace random {
 
-    /** Random number generator. */
+    /** A not very good random number generator. */
     class Crappy : public detail::RandBase<Crappy> {
       /* TYPEDEFS */
     public:

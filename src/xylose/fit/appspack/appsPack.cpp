@@ -57,67 +57,67 @@ namespace {
 #ifdef HAVE_PSTREAMS
   typedef xylose::fit::PExecFunc PMinFunc;
 #endif
-}
 
-struct options {
-  /* MEMBER STORAGE */
-  po::options_description descriptions;
-  po::variables_map  map;
+  struct options {
+    /* MEMBER STORAGE */
+    po::options_description descriptions;
+    po::variables_map  map;
 
-  options() : descriptions("Allowed Options") {
-    descriptions.add_options()
-      ("help,h",                                  "Produce help message.")
-      ("input-file,i",  po::value<std::string>(), "File to open as input")
-    #ifdef HAVE_PSTREAMS
-      ("pipe-comm,p", "Communicate to merit function on stdout/stderr instead "
-                      "of using input/output files.  ")
-    #endif
-      ("num-threads,n", po::value<unsigned  int>()->default_value(2u),
-                        "Use up to <value> threads.  This can also be "
-                        "specified by the environment variable\n"
-                        "NUM_PTHREADS")
-      ;
-  }
-
-  std::ostream & printUsage(std::ostream & out) {
-    out <<
-      "  Threaded AppsPack Executor Help\n"
-      "  ===============================\n"
-      "  xylose version : " XSTR(XYLOSE_VERSION) "\n"
-      "\n"
-      "\n"
-      "  usage:  appsPack [options]...\n\n"
-        << descriptions;
-    return out;
-  }
-
-  int parse( const int & argc, char * argv[] ) {
-    try {
-      po::positional_options_description p;
-      po::store(
-        po::command_line_parser(argc, argv)
-           .options( descriptions )
-           .positional( p ) // we don't support positional parameters for now
-           .run(),
-        map );
-      po::notify( map );
-
-      if ( map.count("help") ) {
-        printUsage( std::cout ) << std::endl;
-        return EXIT_SUCCESS;
-      } else
-        return -1;
-    } catch ( const std::exception & e ) {
-      std::cerr << "command line parsing error: " << e.what() << std::endl;
-      printUsage( std::cerr ) << std::endl;
-      return EXIT_FAILURE;
-    } catch(...) {
-      std::cerr << "command line parsing error:  Unknown error!" << std::endl;
-      printUsage( std::cerr ) << std::endl;
-      return EXIT_FAILURE;
+    options() : descriptions("Allowed Options") {
+      descriptions.add_options()
+        ("help,h",                                  "Produce help message.")
+        ("input-file,i",  po::value<std::string>(), "File to open as input")
+      #ifdef HAVE_PSTREAMS
+        ("pipe-comm,p", "Communicate to merit function on stdout/stderr instead "
+                        "of using input/output files.  ")
+      #endif
+        ("num-threads,n", po::value<unsigned  int>()->default_value(2u),
+                          "Use up to <value> threads.  This can also be "
+                          "specified by the environment variable\n"
+                          "NUM_PTHREADS")
+        ;
     }
-  }
-};
+
+    std::ostream & printUsage(std::ostream & out) {
+      out <<
+        "  Threaded AppsPack Executor Help\n"
+        "  ===============================\n"
+        "  xylose version : " XSTR(XYLOSE_VERSION) "\n"
+        "\n"
+        "\n"
+        "  usage:  appsPack [options]...\n\n"
+          << descriptions;
+      return out;
+    }
+
+    int parse( const int & argc, char * argv[] ) {
+      try {
+        po::positional_options_description p;
+        po::store(
+          po::command_line_parser(argc, argv)
+             .options( descriptions )
+             .positional( p ) // we don't support positional parameters for now
+             .run(),
+          map );
+        po::notify( map );
+
+        if ( map.count("help") ) {
+          printUsage( std::cout ) << std::endl;
+          return EXIT_SUCCESS;
+        } else
+          return -1;
+      } catch ( const std::exception & e ) {
+        std::cerr << "command line parsing error: " << e.what() << std::endl;
+        printUsage( std::cerr ) << std::endl;
+        return EXIT_FAILURE;
+      } catch(...) {
+        std::cerr << "command line parsing error:  Unknown error!" << std::endl;
+        printUsage( std::cerr ) << std::endl;
+        return EXIT_FAILURE;
+      }
+    }
+  };
+}/* namespace (anonymous) */
 
 int main(int argc, char* argv[]) {
   options opts;

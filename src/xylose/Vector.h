@@ -710,6 +710,7 @@ namespace xylose {
   }
 
   /* *** BEGIN SOME SPECIALIZED THREE DIMENSIONAL MULTIPLICATION ROUTINES *** */
+  /** \cond XYLOSE_DETAIL_DOC */
   namespace detail {
     template < typename dims > struct MultVector;
 
@@ -740,6 +741,7 @@ namespace xylose {
       }
     };
   }
+  /** \endcond XYLOSE_DETAIL_DOC */
 
   /** Calculate the product of the elements of this vector. */
   template < typename dimensions, typename T>

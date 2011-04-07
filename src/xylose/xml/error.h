@@ -36,14 +36,17 @@ namespace xylose {
       error(const std::string & s) : super(s) {}
     };
 
+    /** Error exception class for queries did not result in a single context. */
     struct nonsingle_result_error : error {
       nonsingle_result_error(const std::string & s) : error(s) {}
     };
 
+    /** Error exception class for queries that resulted in no results. */
     struct no_results : nonsingle_result_error {
       no_results(const std::string & s) : nonsingle_result_error(s) {}
     };
 
+    /** Error exception class for queries that resulted to too many results. */
     struct too_many_results : nonsingle_result_error {
       too_many_results(const std::string & s) : nonsingle_result_error(s) {}
     };

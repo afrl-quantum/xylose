@@ -31,6 +31,15 @@ useful for larger computational projects.  The routines and data structures
 defined in this collection do not perform any particular computational function
 of themselves, but rather ease the implementation of such.  
 
+Many of the routines included in this collection have associated examples, such
+as
+the \ref xml/simple.cpp "xylose::xml" interface,
+the \ref timer/testTimer.cpp "xylose::Timer" class,
+the \ref threadcache/easier/testPThreadEval.cpp "thread-cached task evaluator",
+the \ref fit/appspack/file-io/prob-file-io.py "threaded APPSPack driver",
+and so on.  In addition to the examples, nearly all
+components have associated unit tests.  Often these unit tests can also be used
+as tools for learning the associated routines.
 
 
 

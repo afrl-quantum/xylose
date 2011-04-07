@@ -39,7 +39,7 @@
 namespace xylose {
   namespace random {
 
-
+    /** A random deviate generator using a Poisson probability distribution. */
     template < typename RNG = xylose::random::Kiss >
     class PoissonianDeviate {
       /* TYPEDEFS */

@@ -37,6 +37,9 @@ namespace xylose {
   namespace fit {
     namespace appspack {
 
+      /** Structure of APPSPack parameters (lower and upper bounds, initial
+       * values, and scaling) packed in the format that APPSPack requires.
+       * This structure is filled as information from the XML file is read. */
       struct PackedParameters {
         APPSPACK::Vector lower;
         APPSPACK::Vector initial;
@@ -44,12 +47,18 @@ namespace xylose {
         APPSPACK::Vector scaling;
       };
 
+      /** Structure of APPSPack coupled constraints packed in the format that
+       * APPSPack requires.  This structure is filled as information from the
+       * XML file is read. */
       struct PackedConstraints {
         APPSPACK::Vector lower;
         APPSPACK::Matrix m;
         APPSPACK::Vector upper;
       };
 
+      /** XML input file parser for appsPack.cpp.
+       * This class extracts the proper contents from the given XML filename and
+       * fills the appropriate packed APPSPack parameters and constraints. */
       class Input {
         /* MEMBER STORAGE */
         std::string probFile;

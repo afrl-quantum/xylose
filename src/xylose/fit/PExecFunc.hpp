@@ -41,6 +41,10 @@
 namespace xylose {
   namespace fit {
 
+    /** Minimization function calling class where the minimization logic is
+     * contained within an external program that communicates via stdin and
+     * stdout streams.
+     */
     struct PExecFunc {
       /* MEMBER STORAGE */
       const std::string program_name;

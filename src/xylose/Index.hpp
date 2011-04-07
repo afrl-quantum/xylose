@@ -30,6 +30,7 @@
 
 namespace xylose {
 
+  /** \cond XYLOSE_DETAIL_DOC */
   namespace detail {
 
     // general template to adjust an index forward by one space
@@ -61,6 +62,7 @@ namespace xylose {
     };
 
   } // namespace detail
+  /** \endcond XYLOSE_DETAIL_DOC */
 
   /** Index type indexes a segment, position pair within a 2D type.  The class
    * is templated on the direction of iteration so that this can represent a

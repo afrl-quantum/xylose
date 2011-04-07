@@ -32,6 +32,9 @@
 
 namespace xylose {
 
+  /** A generic stack implementation following the STL container class template
+   * (class<typename T, typename Alloc>).
+   * */
   template< typename T, typename AllocT = std::allocator< T > >
   class Stack {
     /* TYPEDEFS */

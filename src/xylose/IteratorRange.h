@@ -33,6 +33,8 @@
 
 namespace xylose {
 
+  /** STL container-like utility class to represent any subset of a any
+   * container.  */
   template <class Iter>
   class IteratorRange {
   private:

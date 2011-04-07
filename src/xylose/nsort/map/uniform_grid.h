@@ -33,7 +33,8 @@ namespace xylose {
   namespace nsort {
     namespace map {
 
-      /** Grid sorting map for unspecified dimensions that (by default) matches
+      /** \class xylose::nsort::map::uniform_grid
+       * Grid sorting map for unspecified dimensions that (by default) matches
        * the Uniform grid. */
       template < typename Uniform,
                  typename dims = Dimensions<0u,1u,2u> >
