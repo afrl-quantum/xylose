@@ -3,4 +3,14 @@
     <thingies name="n0">15*amu</thingies>
     <thingies name="n1">25*amu</thingies>
     <thingies name="n2">35*amu</thingies>
+
+    <!-- Some various nodes to query and parse -->
+    <Double>1.0</Double>
+    <Int>1</Int>
+    <VoidP>0x2A</VoidP>
+    <Struct>
+      <X>42.0</X>
+      <Label>a great label</Label>
+      <Y>101010</Y>
+    </Struct>
 </other>

@@ -1,5 +1,8 @@
 /** \file
- * Simple test for xml::Doc class + physical::Quantity parser.
+ * Example for parsing runtime::physical::calc::Driver expressions using
+ * xml::Doc class.
+ *
+ * @see runtime::physical, \ref physical_cpp "physical::C++"
  * */
 
 

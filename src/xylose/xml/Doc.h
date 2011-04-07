@@ -28,6 +28,96 @@
  * These are the input xml files for this test case:
  * \include xml/file.xml
  * \include xml/file-2.xml
+ *
+ * This program prints the following on stdout:
+   \verbatim
+thing[n0]:  15*amu
+Double   :  1
+Int      :  1
+void*    :  0x2a
+Struct   :  { x:42, y:101010, label:'a great label' }
+
+BEGIN OF XML DOCUMENT...
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Stuff>
+    <calc-commands>
+        <command>from physical::unit import *</command>
+        <command>from physical::constant import *</command>
+        <command>from physical import 'element::.*'</command>
+    </calc-commands>
+
+    <thing name="n0">15*amu</thing>
+    <thing name="n1">25*amu</thing>
+    <thing name="n2">35*amu</thing>
+<other>
+    <thingies name="n0">15*amu</thingies>
+    <thingies name="n1">25*amu</thingies>
+    <thingies name="n2">35*amu</thingies>
+
+    <!-- Some various nodes to query and parse -->
+    <Double>1.0</Double>
+    <Int>1</Int>
+    <VoidP>0x2A</VoidP>
+    <Struct>
+      <X>42.0</X>
+      <Label>a great label</Label>
+      <Y>101010</Y>
+    </Struct>
+</other>
+    <thingies name="n0">15*amu</thingies>
+    <thingies name="n1">25*amu</thingies>
+    <thingies name="n2">35*amu</thingies>
+
+    <!-- Some various nodes to query and parse -->
+    <Double>1.0</Double>
+    <Int>1</Int>
+    <VoidP>0x2A</VoidP>
+    <Struct>
+      <X>42.0</X>
+      <Label>a great label</Label>
+      <Y>101010</Y>
+    </Struct>
+<thingies name="n1">25*amu</thingies>
+    <thingies name="n2">35*amu</thingies>
+
+    <!-- Some various nodes to query and parse -->
+    <Double>1.0</Double>
+    <Int>1</Int>
+    <VoidP>0x2A</VoidP>
+    <Struct>
+      <X>42.0</X>
+      <Label>a great label</Label>
+      <Y>101010</Y>
+    </Struct>
+<thingies name="n2">35*amu</thingies>
+
+    <!-- Some various nodes to query and parse -->
+    <Double>1.0</Double>
+    <Int>1</Int>
+    <VoidP>0x2A</VoidP>
+    <Struct>
+      <X>42.0</X>
+      <Label>a great label</Label>
+      <Y>101010</Y>
+    </Struct>
+
+<other>
+    <thingies name="n0">15*amu</thingies>
+    <thingies name="n1">25*amu</thingies>
+    <thingies name="n2">35*amu</thingies>
+
+    <!-- Some various nodes to query and parse -->
+    <Double>1.0</Double>
+    <Int>1</Int>
+    <VoidP>0x2A</VoidP>
+    <Struct>
+      <X>42.0</X>
+      <Label>a great label</Label>
+      <Y>101010</Y>
+    </Struct>
+</other></Stuff>
+...END OF XML DOCUMENT
+   \endverbatim
  */
 
 /** \example xml/testXML.cpp
