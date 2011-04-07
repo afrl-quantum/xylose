@@ -62,7 +62,7 @@ namespace xylose {
     };
 
   } // namespace detail
-  /** \endcond XYLOSE_DETAIL_DOC */
+  /** \endcond */
 
   /** Index type indexes a segment, position pair within a 2D type.  The class
    * is templated on the direction of iteration so that this can represent a

@@ -329,7 +329,7 @@ namespace xylose {
     };
 
   } // namespace detail
-  /** \endcond XYLOSE_DETAIL_DOC */
+  /** \endcond */
 
   //------------------------------------------------------------------------------
   template< typename T, unsigned int kSegmentSize, typename Alloc >

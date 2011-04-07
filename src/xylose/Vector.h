@@ -741,7 +741,7 @@ namespace xylose {
       }
     };
   }
-  /** \endcond XYLOSE_DETAIL_DOC */
+  /** \endcond */
 
   /** Calculate the product of the elements of this vector. */
   template < typename dimensions, typename T>
