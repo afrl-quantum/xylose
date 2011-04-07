@@ -59,7 +59,7 @@ namespace xylose {
   struct DefaultPThreadFunctor {
     /** Gathering function called during a call to
      * PThreadEval::joinAll(Gatherer&).  Inheriting classes that must gather
-     * results <u>must</u> override this function.
+     * results <b><em>must</em></b> override this function.
      *
      * @tparam Gatherer
      *    The type of storage used for gathering operations.
