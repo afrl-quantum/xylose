@@ -1,3 +1,848 @@
+commit 34cc37e23fcc3f6061cf10a971913f0667f099f0
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Thu Apr 7 13:05:40 2011 -0600
+
+    add link from main page to examples (probably does not work with latex output)
+
+commit 340e19b9156f187bb5e26d016d167c1db280f25d
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Thu Apr 7 12:47:53 2011 -0600
+
+    improve simple xylose::xml example
+
+commit 46d258ce7fb11ec6a8a53491de094d113da3bbab
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Thu Apr 7 11:20:54 2011 -0600
+
+    more doc updates
+
+commit 995e029c810ce94725bc03e16d0544a42c8b9315
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Thu Apr 7 10:19:32 2011 -0600
+
+    add examples for PThreadCache/PThreadEval; minor fix for PThreadEval::joinAll()
+
+commit 83947ccf947e7a432c83a4f9d4eb5a7f30aa8dca
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Wed Apr 6 08:05:09 2011 -0600
+
+    fix docs; updates example links; documents parse_item
+
+commit 2b86885c613a8b9a89cb0ec1cb3822e98ec5478e
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Wed Apr 6 02:38:56 2011 -0600
+
+    fix paths to examples linked to with doxygen
+
+commit 191806b80312d0d6d7d80d69a4149a7b762cfd45
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Tue Apr 5 05:47:14 2011 -0600
+
+    version for git-describe in api; other minor docs tweaks
+
+commit d29bb239ecbda652cf402c94390f36ba719f4816
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Tue Apr 5 18:32:49 2011 +0000
+
+    add missing const spec on function--IBM XL demonstrated
+
+commit 39c9c4e5f8e82d7887f609b81964daa53de0a95d
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Mon Apr 4 11:55:14 2011 -0600
+
+    Remove mistakenly added compiled examples
+
+commit e27a27176bfc689616baa5b4f3b46aa39251a727
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Wed Mar 30 09:29:59 2011 -0600
+
+    rk5 example:  must provide localDt(..) ADL function
+
+commit 759ec223307991f734a36a43302f64b9a56715f3
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Wed Mar 30 09:29:23 2011 -0600
+
+    minor compile fix for integrators
+
+commit f998ed2e592ced86b4e69269d6e4809a42943130
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Wed Mar 30 05:44:36 2011 -0600
+
+    Change PThreadCache debug statements to use logger
+
+commit b00884c84b354e7d9c7f153bb7790a393c7063f2
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Tue Mar 29 21:52:41 2011 -0600
+
+    fix compile errors for recent integrator changes
+
+commit 89528744fa6d5db6038502d4d95417122c7a8254
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Tue Mar 29 21:32:00 2011 -0600
+
+    add forward Euler integrator
+
+commit c9324776dec24538df4a69dcf68d79360e7408a4
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Tue Mar 29 21:30:02 2011 -0600
+
+    Integrators now accept optional argument to pass to derivs.
+    
+    For rk5, the extra argument is not optional and must supply a ADL function
+    localDt(arg) that returns a reference to the local time step (a double).  For
+    particles, this is typically, a value that pertains to an individual particle.
+
+commit 38c08d0e327d462ef04aeb67fdc7d152c2454d5c
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Sat Mar 26 11:33:00 2011 -0600
+
+    minor tweak--make appspack example main() functions more model
+
+commit 1b29bfb9ae2ae07cde4f932f8db5fcb13a01b1d7
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Sat Mar 26 11:31:50 2011 -0600
+
+    appspack passes threadid to minimization functions
+
+commit b170314eaaeb897e08beaaf323afc66db29347a9
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Sat Mar 26 11:30:22 2011 -0600
+
+    allow threads in PThreadCache to be created on demand instead of at constructor time
+
+commit b010850f7b75aac93154ccd1f122f43d1d15f68d
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Fri Mar 25 21:44:01 2011 -0600
+
+    add xylose version number to --help (appsPack.cpp)
+
+commit 9b5dbb80101eb073112d6741465ddd7ab0c450c9
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Fri Mar 25 21:43:53 2011 -0600
+
+    appspack::Input parameters order now preserved
+
+commit 59d09e66b6bf027ccd90baab86ac123d1007344c
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Wed Mar 9 16:36:06 2011 -0700
+
+    add extra argument to progs run by appspack to pass in input.xml
+
+commit 615350abf85f58e64cb22e817ae5dbcd53a6a1a3
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Fri Feb 25 16:15:24 2011 -0700
+
+    make uniform_grid args more portable when multiple maps are combined
+
+commit fe48fd28051219591f554c10a7d2b6a90c00c9bf
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Fri Feb 25 16:15:01 2011 -0700
+
+    quiet compiler when computing abs( Vector<int,L> )
+
+commit 7be3dc9f090e3211833e8b269997c30b39bd7698
+Merge: 86e28a9 3555ca5
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Mon Feb 14 15:43:51 2011 -0700
+
+    Merge remote branch 'usr14/master'
+
+commit 3555ca5883be98441d654f68022b84ee6e74496b
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Mon Feb 14 13:44:42 2011 -0700
+
+    small tweaks to appspack python test cases (in examples)
+
+commit 86e28a92075359be19bdb2ff316a6684b3b73fe3
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Sat Feb 12 04:34:12 2011 -0700
+
+    add forgotten <cstddef> include to IteratorRange
+
+commit 31ac5f31d8f295751953c815d85a1eee6bc335d2
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Mon Jan 31 08:52:07 2011 -0700
+
+    slight change to signature of upper_triangle; add assert to NullSymmetryFix
+
+commit 64e8f958bb5b86b321d5de0bf086c5bc05962194
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Thu Jan 20 11:56:36 2011 -0700
+
+    minor code beautification
+
+commit cb1525896d131350ee1666c72f435455b45fabed
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Thu Jan 20 09:57:14 2011 -0700
+
+    quiet cmake down when we cannot find appspack
+
+commit df1b16e38389acb6dd8e08247f1d0ddb06b37f83
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Tue Jan 18 20:08:07 2011 +0000
+
+    change catch statements to work better on IBM compilers
+
+commit 2835c94af7bc74d869a94f0cb71b7295451c1475
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Tue Jan 18 19:29:04 2011 +0000
+
+    update nsort::map::uniform_grid test to provide x0,dx accessor functions
+
+commit 27c8d3601a454d5b40cf10453ee9e4696d2656ec
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Tue Jan 18 19:28:26 2011 +0000
+
+    minor changes to support IBM compilers
+
+commit 315e6b028f224a13eae748334e131f3ae5f2551a
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Tue Jan 18 19:26:40 2011 +0000
+
+    change more "static inline" to just inline in support of IBM compilers
+
+commit 8610c0d0c5a683e147a7482bc2b573fb26b3e8d7
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Sun Jan 16 00:30:24 2011 -0700
+
+    nsort::map::uniform_grid uses accessor functions to get x0, dx
+
+commit 6053ff2cda29df869bfcd31568987aacacdec942
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Fri Jan 14 17:36:00 2011 -0700
+
+    add accessor method to species Range members in nsort::utility::w_species_fields
+
+commit 5dfd935a53f06bbe1b3ce87f9738c8a5dc2c8170
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Thu Jan 6 14:21:19 2011 -0700
+
+    nsort::map::identity can be configured to consume constructor arguments
+
+commit 3eb863f7f1b617a5224be9d5002a1979f7c0da38
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Fri Dec 31 09:05:56 2010 -0700
+
+    enable ADL on new 3D product of Vector elements
+
+commit 15d0b9b9bab4f7278d0021b93154328c56d1cd65
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Fri Dec 31 08:23:44 2010 -0700
+
+    Remove superfluous super typedefs.
+
+commit f25378a3709edfd68d6271f6870e5f78789ca270
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Fri Dec 31 08:23:18 2010 -0700
+
+    simplify nsort pivot maps (renamed to nsort::map::pivot)
+
+commit 59d2b08bf3c1105c63330e08a59106eb0504fa9c
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Fri Dec 31 08:18:33 2010 -0700
+
+    copy dimensions unit tests from dsmc::octree to xylose
+
+commit cc7bb4d00f6eae86c7ffb0308d844648f8ab2789
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Thu Dec 30 16:21:42 2010 -0700
+
+    nsort/grid example now uses new nsort::map::uniform_grid class
+
+commit 6a4b17282839571062fa083ba1c90a15c5dd102b
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Thu Dec 30 16:20:59 2010 -0700
+
+    3D specialization for multiplication of vector elements
+
+commit 9f616ca0e9a36d0725a441b8e8ece4e8b0cd3946
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Thu Dec 30 15:36:12 2010 -0700
+
+    add nsort::map::uniform_grid for sorting onto grid with nsort
+
+commit 5c826d7228ae160f2b393817553a98fe303da95d
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Thu Dec 30 15:35:22 2010 -0700
+
+    typo fix
+
+commit 3e461abc8a8f0c691ede5e7b3e4d2a142470ff25
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Thu Dec 30 14:32:22 2010 -0700
+
+    Adds a useful Dimensions class to keep track of dimensions-> directionsi mapping
+    
+    This is copied from my DSMC::octree work.  It has become apparent that this is
+    more generally useful and will be used shortly in increasing portions of the
+    xylose::nsort code.
+
+commit 946ebe7ef761cd064041a7f9d32610de0d42fc13
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Thu Dec 30 11:23:15 2010 -0700
+
+    Add NSort example for sorting into a grid
+    
+    Also adds a new utility w_species_fields class to be used in conjunction with
+    xylose::nsort::map::w_species wrapper class.  This is copied from my
+    DSMC::octree work.
+    This also adds a more arbitrary method of passing arguments to different layers
+    of the xylose::nsort::map classes.
+
+commit d6e4e2a3b5b3e7b3a8cfe105cf0c368992b35cb3
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Tue Dec 28 15:54:40 2010 -0700
+
+    cmake tweaks for local find module
+
+commit 4eb450f4b19ae9ab06206c350aa9013af75f1333
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Mon Dec 27 13:26:21 2010 -0700
+
+    poissonian-deviate histogram now uses integer keys so that bins print out with integer values
+
+commit a6f2467dfb232fe19219a5d38c528f283c5aae68
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Mon Dec 27 13:25:32 2010 -0700
+
+    lambda_max is now from a static member function/static function variable
+
+commit 6b9c4dbdda1fc920142f496542f2f4a9730a7d67
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Wed Dec 22 17:51:37 2010 -0700
+
+    fix cast for poissonian deviate; add poissonian examples
+
+commit 55f170a713a861e7f56f4425a73459fab054848f
+Merge: e5d7a4c eb22202
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Wed Dec 22 16:58:23 2010 -0700
+
+    Merge branch 'strutil'
+
+commit e5d7a4ce0073b945e555c342c25d529544409770
+Merge: 35b8acd 175b2cf
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Wed Dec 22 16:49:00 2010 -0700
+
+    Merge remote branch 'usr14/master'
+
+commit 175b2cf9269547cde812b50fb869c50c6692ad41
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Wed Dec 22 16:10:26 2010 -0700
+
+    fix mistaken location of #endif; changed default threads to 2
+
+commit 0f0eec9d3c2b835307ffec8f9fd6a9b932515cad
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Wed Dec 22 14:51:07 2010 -0700
+
+    appspack_pthread now builds under cmake
+
+commit a3740c481154053c9e139c576e7c2d8e7e9c614e
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Wed Dec 22 14:26:13 2010 -0700
+
+    finally got openmp and pthreads tests of synclock working using find modules
+
+commit 075f45773d632eb8ee23f06f003d330eff612194
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Wed Dec 22 14:25:07 2010 -0700
+
+    change name of appsPack to appspack_pthread to follow convention from appspack
+
+commit 44940e03da86541619c33f557b566596785d21d7
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Wed Dec 22 13:19:42 2010 -0700
+
+    xylose now generates xylose-config.cmake
+    
+    This can be used with a local Findxylose.cmake module that can read the relevant
+    information from xylose-config.cmake.
+
+commit 4aea652541d61b8fd9ec5dd34e85adc71b70bd96
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Mon Dec 20 18:45:48 2010 -0700
+
+    use new physical find module
+
+commit 0ca02cdf50bacfccb6dc63358b0c1a49951aae13
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Mon Dec 20 17:49:51 2010 -0700
+
+    use new Findphysical.cmake local find module (super-project must have this)
+
+commit 8e77dbd9c879cad09e2c08a8e27513520b1066c9
+Author: James Parham <jamey@theparhams.net>
+Date:   Mon Dec 20 09:10:11 2010 -0700
+
+    appspack examples use ./ in front of relative local path now
+
+commit 35b8acd234da2ef656f39cd6a65af7ece1b38bc3
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Sat Dec 18 22:38:22 2010 -0700
+
+    adds a Poissonian deviate class
+
+commit 04263fe5f4addfb2e00a71f0d1b89a24f3d9a504
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Sat Dec 18 22:37:46 2010 -0700
+
+    fix tiny spelling mistake
+
+commit 0a865e277d525bd1d01009926482a5f9de20adae
+Merge: 4d8e176 49ffa86
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Fri Dec 17 10:56:47 2010 -0700
+
+    Merge branch 'usr14/master' into master
+
+commit 4d8e1765ac6c8e26796848bdaab8b14025442df0
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Fri Dec 17 10:51:20 2010 -0700
+
+    added Poissonian distribution
+
+commit 95fef101f3392d3090b70b16cac4474e2dc3a2db
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Fri Dec 17 10:50:59 2010 -0700
+
+    SingleValued bin type inits with default constructor
+
+commit 7bf8db63218f02d881b0bf155d0243f6d1720990
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Fri Dec 17 10:50:29 2010 -0700
+
+    IteratorRange returns size_t
+
+commit fc296b9b4aa87faa5fc6633163c2e77fd41d1e88
+Merge: da8b1a5 49ffa86
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Thu Dec 16 15:13:24 2010 -0700
+
+    Merge remote branch 'origin/master' into icepic
+
+commit da8b1a5e9a08016177e3b4fdc1f990b3c5752751
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Thu Dec 16 15:11:09 2010 -0700
+
+    version from git-describe; cmake usability improvements
+
+commit 49ffa8644b25aeee69002bac351e792a906898a3
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Tue Dec 14 12:13:52 2010 -0700
+
+    Threaded APPSPack executor added with example files.
+
+commit eb22202391d25edca221992155c523e8bdd1dfd7
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Thu Dec 2 21:42:13 2010 -0700
+
+    make toupper/tolower simpler
+
+commit 6b601b1844852d2a7a229dd82aac9aaea5e08d81
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Thu Dec 2 17:24:56 2010 -0700
+
+    workaround added for intel 11.1 bug--this bug might still bite you with other unrelated code
+
+commit 7e5e322c3df53fcbe7689918f80cfd44e66438ac
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Tue Nov 30 11:11:32 2010 -0700
+
+    Fixed headers for GenericPoint and GenericRect
+
+commit 38fe4fb4048a5279e9da8a0baa3dbbe2a3a85e42
+Author: Curtis Cooper <curtis@stellarscience.com>
+Date:   Mon Nov 22 23:07:57 2010 +0000
+
+    Because toupper and tolower are overloaded members of the
+    ctype class, a static cast is required by some compilers
+    when calling them through std::transform to distinguish
+    the overloads.  This corrects a compilation problem on
+    xlC and possibly other C++ compilers (g++ 4.1 seems to
+    work without this).
+
+commit 61c376df02b119fe0b641590707e7abc0a1059ce
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Fri Nov 19 10:50:26 2010 -0700
+
+    New option to specify testing of first random roll
+
+commit 003a5787acd50f779e94db0b5ba85a4cc43bb439
+Merge: 05fb97c 36c2185
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Fri Nov 19 10:44:54 2010 -0700
+
+    Merge remote branch 'topic/RNG' into icepic
+    
+    Conflicts:
+    	src/xylose/random/test/Crappy.cpp
+
+commit 36c2185fb9208e70740c35c212b1fecfd2e0b133
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Thu Nov 18 23:39:39 2010 -0700
+
+    Swap out c-style math for c++ std:: math.
+
+commit bc37299df8fb9611b2378704098ca656790bd41f
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Thu Nov 18 23:38:28 2010 -0700
+
+    use c++ <limits>; add scale accessor
+
+commit a16b51c61f2c87fd0fcc905c2fdee31aa32aa59d
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Thu Nov 18 23:11:08 2010 -0700
+
+    random number tests use common code now
+    
+    Also added command line option '--generate-random' for when the user really
+    wants to write random-bytes to file for external examination.
+
+commit 05fb97c9e75c280f6ec51ceb2c861331b9dcde7f
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Wed Nov 17 13:26:58 2010 -0700
+
+    MSVC thinks int and int32_t are different--work around added
+    
+    Also added some tests for 'long long' and 'unsigned long long' types.
+
+commit 5dca482084946e98aefa5a77f8f94ec52d557430
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Wed Nov 17 13:25:29 2010 -0700
+
+    Option to disable windows threads use; require ws2_32.lib when winsock2.h used
+
+commit 9789b07d8e86d06eda803e8c563950c97b975c7b
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Tue Nov 16 10:32:42 2010 -0700
+
+    undef max/min if _MSC_VER defined
+
+commit 5bf4e0138aa9cedd5ca7d3d06caa2d22373505bd
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Tue Nov 16 10:14:50 2010 -0700
+
+    MSVC did not like members names matching class names
+
+commit 72aecf7d47116de33179d7f2dbb7f083ebfc125c
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Tue Nov 16 10:14:18 2010 -0700
+
+    minor fixes for MSVC:  use boost::stdint
+
+commit 604c1ae25383b6aa6fb7a9da8118a41376d5ec64
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Tue Nov 16 07:54:51 2010 -0700
+
+    add #ifndef around #define _USE_MATH_DEFINES
+
+commit 4d793f79619c789dc199641f2b40567df49b6b4b
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Mon Nov 15 14:38:59 2010 -0700
+
+    add Boost_DEFINITIONS when using boost
+
+commit f8ca34585b1b81b9695a07d7677071f2a8eb276a
+Merge: da4f617 c0a75c5
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Wed Nov 10 22:45:19 2010 -0700
+
+    Merge remote branch 'origin/master'
+
+commit c0a75c56b84e95c12d4b1bff920cf1313a131400
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Wed Nov 10 17:06:34 2010 -0700
+
+    MSVC did not like a 'and' that was used instead of &&
+    
+    Also removed some 'static' keywords in front of some 'inline' functions.
+
+commit e8857bf3cd3f66726f49d8780b577811788829d2
+Author: Will Dicharry <wdicharry@stellarscience.com>
+Date:   Tue Nov 9 10:21:50 2010 -0700
+
+    Added forward declaration header.
+
+commit da4f617f2a9a832c787ff0f0b78b0ab74b76e8ac
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Mon Nov 8 22:06:35 2010 -0700
+
+    fixed Jamroot to allow ../ project to load boost and other projects
+
+commit 4e0fbd2519dd0a016b1e2cf6c7ff5fd999b27d51
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Mon Nov 8 10:22:02 2010 -0700
+
+    fixed small typo in HEADER guard
+
+commit d868dfb31700a9a7573fedc15cb6ecdf34ec87b8
+Author: Dirk Diggler <matt@localhost>
+Date:   Fri Nov 5 08:51:18 2010 -0600
+
+    Moved generic point/rect to xylose
+
+commit 106aca8355eccdee4268b73f36a27527edad1a8e
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Mon Nov 8 10:08:47 2010 -0700
+
+    added easy method to get name of xml node
+
+commit b45371836fa34b37d1c9bb99e8eb535125e0e42c
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Thu Oct 21 10:25:43 2010 -0600
+
+    inverter uses randExc now--should have done that earlier
+
+commit e49a2e0b0eb1676d4bcc90ad1e9d67b5b2f0ad6f
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Thu Oct 21 08:36:22 2010 -0600
+
+    changed hist item to double to allow for averaging easier
+
+commit 4d698224a2cc8066ba5bcb5949f6d0aa75889679
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Fri Oct 15 15:51:45 2010 -0600
+
+    Adds strip, lstrip, rstrip, toupper, and unit tests for strutil.h
+    
+    This also fixes a out-of-bounds memory error in tolower--I had negelected to
+    allocate memory for the return value.
+
+commit 7a2e69e44753b4783abea4791b3c463c0ae3e788
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Thu Oct 14 14:11:52 2010 -0600
+
+    Added more interfaces for from_string and some format changes.
+
+commit f22c127a43043c674436a6a30bd509abc1d75cb5
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Wed Oct 6 12:34:11 2010 -0600
+
+    Tweaked stream fraction comments
+
+commit 77f1131fa09b0c1b5f3f526d688c84cc2aa86a26
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Fri Oct 1 15:21:50 2010 -0600
+
+    Timing now uses a boost::ptr_vector
+
+commit 13df2ed8dd7d25a89a1f1f701373b0d37e394430
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Fri Oct 1 15:21:44 2010 -0600
+
+    imported PThread cache/task manager from olson-tools
+
+commit c4c4fe13d92432734be8e14eea60f844efaaa6d2
+Author: Will Dicharry <wdicharry@stellarscience.com>
+Date:   Thu Sep 30 23:15:01 2010 +0000
+
+    Removed static specifier on functions to aid compilation on XLC 8.0.
+
+commit 5463b1265bf118718f074f37e9b178d1e67e5771
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Wed Sep 15 11:09:13 2010 -0600
+
+    commented out POSIX functions that WIN32 still provides...
+
+commit 3f85518fa222e005d7ff1c3c89f82489b4ba662c
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Wed Sep 15 11:09:09 2010 -0600
+
+    math.h and cmath to be proxied by compat/math.h
+
+commit 505e9abeb423fbed1827aef6f7a6c36c85de726f
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Wed Sep 15 11:09:05 2010 -0600
+
+    USE_WINSOCK is now set/written to compat/config.hpp
+
+commit 9795e7a479c07e295b19dce213609ce00853c52d
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Wed Sep 15 11:09:01 2010 -0600
+
+    building works now--not necessarily linking yet though...
+
+commit 564c34cfab97e0d6563a67519b1f8e38b59b9f34
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Wed Sep 15 11:08:56 2010 -0600
+
+    Improved/added to the windows compatibility layer.
+
+commit 3338be8fc55a13b200558434b1498a8b977204ed
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Wed Sep 15 11:08:52 2010 -0600
+
+    Win32 fixes for Timer class...
+
+commit 419875e3f40f51c3bdc67318c61af412ca23b967
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Wed Sep 15 11:08:49 2010 -0600
+
+    first try at fixing Timer.h for windows
+
+commit 302d946a4e82045a6b722f7f663685a93d9e1e72
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Wed Sep 15 11:08:44 2010 -0600
+
+    added const ident to make_vector::operator
+
+commit 74648e54c0b7fa8521672a36d5552dd7bf23d482
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Wed Sep 15 11:08:36 2010 -0600
+
+    Added discrete distribution inverter and examples.
+
+commit f8b5448e92d4ee967bb9bcfd6a69290b4ceb79fb
+Author: Spencer E. Olson <olsonse@olsonse-laptop.(none)>
+Date:   Wed Sep 1 18:02:11 2010 -0600
+
+    random/test/* are now real Boost.Test tests
+    
+    ... even though these aren't really good tests yet.
+    We need to use something like diehard to make them decent tests.
+    --Updated src/xylose/random/test/CMakeLists.txt to build these tests.
+
+commit ba09372da1b2c9e6dff4115c43c1a038d92b0b1d
+Author: Spencer E. Olson <olsonse@olsonse-laptop.(none)>
+Date:   Sat Aug 14 13:38:00 2010 -0600
+
+    remove two compiler warnings
+
+commit 8763fcd2cda72ddf93bbb9c3ec81e24c1a435952
+Author: Spencer E. Olson <olsonse@davinci>
+Date:   Wed Aug 11 23:17:29 2010 +0000
+
+    std::iter_swap needs <algorithm>.  Replace memset with std::fill.
+
+commit 3ad51c80fad6a7dd9eee4dcea3caee070acabf7a
+Author: Spencer E. Olson <olsonse@olsonse-laptop.(none)>
+Date:   Tue Jul 20 14:14:39 2010 -0600
+
+    bumped version number in CMakeLists.txt
+
+commit 4bd0cc30bc30ff0b64a009b357af686c9192bfe9
+Author: Spencer E. Olson <olsonse@asok>
+Date:   Tue Jul 20 11:55:25 2010 -0600
+
+    Fixed some name abiguity problems that arise on the IBM compiler.
+
+commit 8ab5a261c495d4d6763ce880247f186ad2bc9e38
+Author: Spencer E. Olson <olsonse@olsonse-laptop.(none)>
+Date:   Thu Jul 15 21:50:06 2010 -0600
+
+    small modification to unit test macro
+
+commit f33b5b02f7cf6af072a1addcefde4faa00df81c9
+Author: Spencer E. Olson <olsonse@olsonse-laptop.(none)>
+Date:   Thu Jul 15 15:15:26 2010 -0600
+
+    added version variable and #define
+
+commit 06b298f657e75c991b697619a90db5f6eead6de7
+Author: Spencer E. Olson <olsonse@olsonse-laptop.(none)>
+Date:   Wed Jul 14 15:47:29 2010 -0600
+
+    fixed broken test since we now use xmlDocGetRootElement
+
+commit b22d8abbb0a39e9389ffbd3101149cd4e7d40650
+Author: Spencer E. Olson <olsonse@olsonse-laptop.(none)>
+Date:   Wed Jul 14 10:39:40 2010 -0600
+
+    64 bit constant needed LL suffix to declare it as long long on 32-bit systems
+
+commit 2f1d88af767cce91061978c54397910c174bffd4
+Author: Spencer E. Olson <olsonse@olsonse-laptop.(none)>
+Date:   Mon Jun 21 14:06:32 2010 -0600
+
+    logger: default program name is now empty
+
+commit 89d6f87a54b2646e59448e9c6df83733ca8185e8
+Author: Spencer E. Olson <olsonse@olsonse-laptop.(none)>
+Date:   Mon Jun 21 10:27:55 2010 -0600
+
+    imported SquareMatrix class from olson-tools--works well with Vector class
+
+commit d62110e21d2520c67ab4c92db51259f507ba7a17
+Author: Spencer E. Olson <olsonse@olsonse-laptop.(none)>
+Date:   Mon Jun 21 10:14:02 2010 -0600
+
+    replaced use of memset with std::fill
+
+commit 00b86bd912434aa5d8dbe98879382ee34a50512a
+Author: Spencer E. Olson <olsonse@olsonse-laptop.(none)>
+Date:   Mon Jun 7 09:35:04 2010 -0600
+
+    imported gauss_deviate from olson-tools
+
+commit 3f7a8ba66f153401b168428ffd40b48f78d17145
+Author: Spencer E. Olson <olsonse@asok>
+Date:   Thu May 27 17:31:43 2010 -0600
+
+    more features for xml classes
+
+commit 6263e39f77b0429462892b8df1e300c5fc30ea78
+Author: Spencer E. Olson <olsonse@olsonse-laptop.(none)>
+Date:   Thu May 27 15:43:17 2010 -0600
+
+    Imported olson_tools binning stuff and one distribution example.
+
+commit 743cbf1433a2e390294679bb6ea6a9fcd1aff4df
+Author: Spencer E. Olson <olsonse@olsonse-laptop.(none)>
+Date:   Thu May 27 12:10:39 2010 -0600
+
+    Imported olson_tools::timing for generic signal timing.
+
+commit dc3f5bfdb1e68012090c45ae4614c99bb912fcd8
+Author: Spencer E. Olson <olsonse@olsonse-laptop.(none)>
+Date:   Tue May 25 16:29:40 2010 -0600
+
+    added new integration namespace and routines; currently only rk2,rk4, and rk5-adaptive exist
+
+commit 926de807f1c13a2ccdd0f851b6ad065125b696c9
+Author: Spencer E. Olson <olsonse@olsonse-laptop.(none)>
+Date:   Tue May 25 12:04:59 2010 -0600
+
+    added min(vector) and comp[Min,Max] functions
+
+commit 00d0e5eb82a460788065212c1fee047ba261e3c5
+Author: Spencer E. Olson <olsonse@umich.edu>
+Date:   Fri Mar 19 04:41:09 2010 -0600
+
+    Vector ostream output separator fixed (patch from olson-tools)
+
+commit 3e38a2e7c78a06da36e6a0aa80243859b592d64a
+Author: Spencer E. Olson <olsonse@olsonse-laptop.(none)>
+Date:   Tue May 18 15:55:56 2010 -0600
+
+    added nothing.hpp for a 'nothing' labeled empty struct
+
+commit c547f1fa37aedd9d31816d6f73838ec480099919
+Author: Spencer E. Olson <olsonse@olsonse-laptop.(none)>
+Date:   Tue May 18 11:08:18 2010 -0600
+
+    /physical project now imported at top level
+
+commit 0d20d20ce30de855207eeb8d94ac89b0df52bed0
+Author: Spencer E. Olson <olsonse@olsonse-laptop.(none)>
+Date:   Tue May 18 11:05:07 2010 -0600
+
+    added convenient-copy installs of examples
+
+commit b5c5e137130a724c9c3def7d67f6172ff4046705
+Author: Will Dicharry <wdicharry@stellarscience.com>
+Date:   Thu May 13 15:31:11 2010 -0600
+
+    Added iterator interface to xylose::Vector. Added additional throw specifier to
+    xml::Doc::query.
+
+commit 5b27eb4573ad5c1c5a55b27801308214c13cfb79
+Author: Spencer E. Olson <olsonse@asok>
+Date:   Fri Apr 16 17:28:27 2010 -0600
+
+    updated changelog
+
 commit 9986ba9ad602ec8eec11cf4fe980013334d46c31
 Author: Spencer E. Olson <olsonse@asok>
 Date:   Thu Apr 15 17:24:12 2010 -0600
