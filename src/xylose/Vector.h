@@ -193,13 +193,15 @@ namespace xylose {
     }
 
     /** Vector X Scalar immediate multiplication. */  
-    inline const Vector & operator*= (const T & that) {
+    template < typename TR >
+    inline const Vector & operator*= (const TR & that) {
       for (unsigned int i = 0; i < L; ++i) this->val[i] *= that;
       return *this;
     }
 
     /** Vector X Scalar immediate division. */  
-    inline const Vector & operator/= (const T & that) {
+    template < typename TR >
+    inline const Vector & operator/= (const TR & that) {
       for (unsigned int i = 0; i < L; ++i) this->val[i] /= that;
       return *this;
     }
@@ -492,27 +494,27 @@ namespace xylose {
   }
 
   /** Vector * Scalar  multiplication. */  
-  template < typename T, unsigned int L >
-  inline Vector<T,L> operator* (const Vector<T,L> & lhs, const T & rhs) {
-    Vector<T,L> ret;
+  template < typename TL, unsigned int L, typename TR >
+  inline Vector<TL,L> operator* (const Vector<TL,L> & lhs, const TR & rhs) {
+    Vector<TL,L> ret;
     for (unsigned int i = 0; i < L; ++i)
       ret[i] = lhs[i] * rhs;
     return ret;
   }
 
   /** Scalar * Vector  multiplication. */  
-  template < typename T, unsigned int L >
-  inline Vector<T,L> operator* (const T & lhs, const Vector<T,L> & rhs) {
-    Vector<T,L> ret;
+  template < typename TL, typename TR, unsigned int L >
+  inline Vector<TL,L> operator* (const TL & lhs, const Vector<TR,L> & rhs) {
+    Vector<TL,L> ret;
     for (unsigned int i = 0; i < L; ++i)
       ret[i] = lhs * rhs[i];
     return ret;
   }
 
   /** Vector / Scalar division. */
-  template < typename T, unsigned int L >
-  inline Vector<T,L> operator/ (const Vector<T,L> & lhs, const T & rhs) {
-    Vector<T,L> ret;
+  template < typename TL, unsigned int L, typename TR >
+  inline Vector<TL,L> operator/ (const Vector<TL,L> & lhs, const TR & rhs) {
+    Vector<TL,L> ret;
     for (unsigned int i = 0; i < L; ++i)
       ret.val[i] = lhs[i] / rhs;
     return ret;
