@@ -7,25 +7,25 @@
  *      software.  This software is released under the LGPL license except
  *      otherwise explicitly stated in individual files included in this
  *      package.  Generally, the files in this package are copyrighted by
- *      Spencer Olson--exceptions will be noted.   
+ *      Spencer Olson--exceptions will be noted.
  *                 Copyright 2004-2008 Spencer Olson
  *
  * This library is free software; you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation; either version 2.1 of the
  * License, or (at your option) any later version.
- *  
+ *
  * This library is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
- *                                                                                 
+ *
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
  * USA.                                                                           .
- * 
- * Questions? Contact Spencer Olson (olsonse@umich.edu) 
+ *
+ * Questions? Contact Spencer Olson (olsonse@umich.edu)
  */
 
 /*
@@ -43,7 +43,7 @@
  * because of the inefficiency of using temporaries all over the place.  For
  * time-insensitive operations, these classes are really helpful as the code
  * is easier to write, looks cleaner, and much easier to read.
- * 
+ *
  * One <em>could</em> use parts of these classes in time-sensitive operations
  * if one is careful.  I don't want to go into all the caveats for
  * time-sensitive operations, but be assured they can be worked around.
@@ -51,7 +51,7 @@
  *
  * But, I've noticed that compilers are pretty smart at optimizing temporaries
  * away and unrolling the loops for sizes ~3 (which are mostly what I use this
- * for).  Thus, in most cases, these classes should perform just fine.  
+ * for).  Thus, in most cases, these classes should perform just fine.
  *
  * Copyright 2004-2008 Spencer Olson
  */
@@ -92,7 +92,7 @@ namespace xylose {
   /** Vector class of arbitrary type.  The idea here is to provide a clean
    * interface to vector calculations that are not too slow.  The size is
    * compile time and the compiler may opt to unroll loops and perform other
-   * optimizations.   
+   * optimizations.
    */
   template <typename T, unsigned int L>
   class Vector {
@@ -179,7 +179,7 @@ namespace xylose {
 
 
     /* ***** MATH TYPE OPERATIONS THAT ARE MEMBERS. */
-    /** Apply std::abs(double) to all elements and save.  
+    /** Apply std::abs(double) to all elements and save.
      * std::abs(double) is called regardless of the actual type of the vector. */
     inline const Vector & save_fabs() {
       for (unsigned int i = 0; i < L; ++i) this->val[i] = std::abs(this->val[i]);
@@ -192,39 +192,39 @@ namespace xylose {
       return *this;
     }
 
-    /** Vector X Scalar immediate multiplication. */  
+    /** Vector X Scalar immediate multiplication. */
     template < typename TR >
     inline const Vector & operator*= (const TR & that) {
       for (unsigned int i = 0; i < L; ++i) this->val[i] *= that;
       return *this;
     }
 
-    /** Vector X Scalar immediate division. */  
+    /** Vector X Scalar immediate division. */
     template < typename TR >
     inline const Vector & operator/= (const TR & that) {
       for (unsigned int i = 0; i < L; ++i) this->val[i] /= that;
       return *this;
     }
 
-    /** Vector - Scalar immediate subtraction. */  
+    /** Vector - Scalar immediate subtraction. */
     inline const Vector & operator-= (const T& that) {
       for (unsigned int i = 0; i < L; ++i) this->val[i] -= that;
       return *this;
     }
 
-    /** Vector - Vector immediate subtraction. */  
+    /** Vector - Vector immediate subtraction. */
     inline const Vector & operator-= (const Vector& that) {
       for (unsigned int i = 0; i < L; ++i) this->val[i] -= that.val[i];
       return *this;
     }
 
-    /** Vector + Vector immediate subtraction. */  
+    /** Vector + Vector immediate subtraction. */
     inline const Vector & operator+= (const Vector& that) {
       for (unsigned int i = 0; i < L; ++i) this->val[i] += that.val[i];
       return *this;
     }
 
-    /** Vector + Scalar immediate subtraction. */  
+    /** Vector + Scalar immediate subtraction. */
     inline const Vector & operator+= (const T& that) {
       for (unsigned int i = 0; i < L; ++i) this->val[i] += that;
       return *this;
@@ -493,7 +493,7 @@ namespace xylose {
     return retval;
   }
 
-  /** Vector * Scalar  multiplication. */  
+  /** Vector * Scalar  multiplication. */
   template < typename TL, unsigned int L, typename TR >
   inline Vector<TL,L> operator* (const Vector<TL,L> & lhs, const TR & rhs) {
     Vector<TL,L> ret;
@@ -502,7 +502,7 @@ namespace xylose {
     return ret;
   }
 
-  /** Scalar * Vector  multiplication. */  
+  /** Scalar * Vector  multiplication. */
   template < typename TL, typename TR, unsigned int L >
   inline Vector<TL,L> operator* (const TL & lhs, const Vector<TR,L> & rhs) {
     Vector<TL,L> ret;
@@ -520,7 +520,7 @@ namespace xylose {
     return ret;
   }
 
-  /** Vector - Vector subtraction. */  
+  /** Vector - Vector subtraction. */
   template < typename TL, typename TR, unsigned int L >
   inline Vector<TL,L> operator- (const Vector<TL,L> & lhs,
                                  const Vector<TR,L> & rhs) {
@@ -530,7 +530,7 @@ namespace xylose {
     return retval;
   }
 
-  /** Vector - Scalar subtraction. */  
+  /** Vector - Scalar subtraction. */
   template < typename T, unsigned int L >
   inline Vector<T,L> operator- (const Vector<T,L> & lhs, const T & rhs) {
     Vector<T,L> retval;
@@ -539,7 +539,7 @@ namespace xylose {
     return retval;
   }
 
-  /** Scalar - Vector subtraction. */  
+  /** Scalar - Vector subtraction. */
   template < typename T, unsigned int L >
   inline Vector<T,L> operator- (const T & lhs, const Vector<T,L> & rhs) {
     Vector<T,L> retval;
@@ -548,7 +548,16 @@ namespace xylose {
     return retval;
   }
 
-  /** Vector + Vector addition. */  
+  /** Vector negation. */
+  template < typename T, unsigned int L >
+  inline Vector<T,L> operator- (const Vector<T,L> & v) {
+    Vector<T,L> retval;
+    for (unsigned int i = 0; i < L; ++i)
+      retval[i] = - v[i];
+    return retval;
+  }
+
+  /** Vector + Vector addition. */
   template < typename TL, typename TR, unsigned int L >
   inline Vector<TL,L> operator+ (const Vector<TL,L> & lhs,
                                  const Vector<TR,L> & rhs) {
@@ -558,7 +567,7 @@ namespace xylose {
     return retval;
   }
 
-  /** Vector + Scalar addition. */  
+  /** Vector + Scalar addition. */
   template < typename T, unsigned int L >
   inline Vector<T,L> operator+ (const Vector<T,L> & lhs, const T & rhs) {
     Vector<T,L> retval;
@@ -567,7 +576,7 @@ namespace xylose {
     return retval;
   }
 
-  /** Scalar + Vector addition. */  
+  /** Scalar + Vector addition. */
   template < typename T, unsigned int L >
   inline Vector<T,L> operator+ (const T & lhs, const Vector<T,L> & rhs) {
     Vector<T,L> retval;
@@ -826,7 +835,7 @@ namespace xylose {
   };
 
   /** Specific implementation of make_vector class for length=3.  Providing this
-   * will help avoid introducing bugs which va_arg stuff is prone to. 
+   * will help avoid introducing bugs which va_arg stuff is prone to.
    */
   template < typename T >
   struct make_vector<T,3u> {
