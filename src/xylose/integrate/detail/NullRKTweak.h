@@ -65,18 +65,22 @@ namespace xylose {
       /** A NOOP class for RK<DxDt,5u,RkTweak> (5th order adaptive Runge-Kutta).*/
       struct NullRKTweak {
         /** The first rkTweak is called at the beginning of the RK driver. */
-        template <unsigned int ndim_>
-        inline void rkTweakFirst( Vector<double,ndim_> & x,
-                                  const double & t,
-                                  const double & dt_step_current,
-                                  double & dt_step_next ) {}
+        template < unsigned int ndim,
+                   typename Other >
+        inline void first(       Vector<double,ndim> & x,
+                           const double & t,
+                           const double & dt_step_current,
+                                 double & dt_step_next,
+                                 Other & other ) {}
 
         /** The second rkTweak is called at the end of the RK driver. */
-        template <unsigned int ndim_>
-        inline void rkTweakSecond( Vector<double,ndim_> & x,
-                                   const double & t,
-                                   const double & dt_step_current,
-                                   double & dt_step_next ) {}
+        template < unsigned int ndim,
+                   typename Other >
+        inline void second(       Vector<double,ndim> & x,
+                            const double & t,
+                            const double & dt_step_current,
+                                  double & dt_step_next,
+                                  Other & other ) {}
       };
 
     }/* namespace xylose::integrate::detail */
