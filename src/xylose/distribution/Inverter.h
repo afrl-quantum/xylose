@@ -122,7 +122,10 @@ namespace xylose {
     private:
       /** The global generator to use for all distributions if a specific
        * reference is not passed in at constructor time. */
-      static RNG global_RNG;
+      static RNG & global_RNG() {
+        static RNG rng;
+        return rng;
+      }
 
 
       /* MEMBER FUNCTIONS */
@@ -136,7 +139,7 @@ namespace xylose {
       /** Copy onstructor (copying from a specific inverted distribution. */
       inline Inverter( const int & _qLen,
                        const double * _q,
-                       RNG & rng = Inverter::global_RNG );
+                       RNG & rng = Inverter::global_RNG() );
 
       /** Inverter constructor.
        * This is templated constructor to allow for various types of distribution
@@ -170,7 +173,7 @@ namespace xylose {
       inline Inverter( const DistroFunctor & distro,
                        const double & min, const double & max,
                        const int & nbins = 100,
-                       RNG & rng = Inverter::global_RNG );
+                       RNG & rng = Inverter::global_RNG() );
 
       /** Destructor frees memory for q-array. */
       inline ~Inverter();

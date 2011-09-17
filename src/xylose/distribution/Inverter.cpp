@@ -75,10 +75,6 @@ namespace xylose {
   namespace distribution {
 
     template < typename RNG >
-    RNG Inverter<RNG>::global_RNG;
-
-
-    template < typename RNG >
     inline void Inverter<RNG>::copyLq( const int & that_L,
                                        const double * that_q ) {
       if (q) delete[] q;
