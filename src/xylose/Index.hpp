@@ -75,7 +75,7 @@ namespace xylose {
   public:
       
     typedef size_t size_type;
-    typedef ptrdiff_t difference_type;
+    typedef std::ptrdiff_t difference_type;
     static const size_type segment_size = kSegmentSize;
 
 

@@ -80,7 +80,7 @@ namespace xylose {
 
     public:
       typedef typename SegVectorT::size_type size_type;
-      typedef ptrdiff_t difference_type;
+      typedef std::ptrdiff_t difference_type;
       typedef typename SegVectorT::value_type value_type;
       typedef typename SegVectorT::reference reference;
       typedef typename SegVectorT::const_reference const_reference;
