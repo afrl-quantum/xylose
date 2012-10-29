@@ -110,7 +110,8 @@ namespace xylose {
         }
 
         dt_step_current = dt_step;
-        rkTweak.first(x, t, (const double&)dt_step_current, dt_step, other);
+        rkTweak.first( x, t, (const double&)dt_step_current, dt_step,
+                       other, derivs );
 
         derivs(x, t, dt_step, dxdt, other);
 
@@ -148,7 +149,8 @@ namespace xylose {
          * time-step/2.0:  one before the call to derivs at the beginning
          * of the while loop and one right here.
          */
-        rkTweak.second(x, t, (const double&)dt_step_current, dt_step, other);
+        rkTweak.second( x, t, (const double&)dt_step_current, dt_step,
+                        other, derivs );
 
         if ( truncated_step == 0 || std::abs(dt_step) < std::abs(dt_step_current)) {
           /* don't increase the stepsize beyond the previous corrected value

@@ -66,21 +66,25 @@ namespace xylose {
       struct NullRKTweak {
         /** The first rkTweak is called at the beginning of the RK driver. */
         template < unsigned int ndim,
-                   typename Other >
+                   typename Other,
+                   typename Derivs >
         inline void first(       Vector<double,ndim> & x,
                            const double & t,
                            const double & dt_step_current,
                                  double & dt_step_next,
-                                 Other & other ) {}
+                                 Other & other,
+                                 Derivs & derivs ) {}
 
         /** The second rkTweak is called at the end of the RK driver. */
         template < unsigned int ndim,
-                   typename Other >
+                   typename Other,
+                   typename Derivs >
         inline void second(       Vector<double,ndim> & x,
                             const double & t,
                             const double & dt_step_current,
                                   double & dt_step_next,
-                                  Other & other ) {}
+                                  Other & other,
+                                  Derivs & derivs ) {}
       };
 
     }/* namespace xylose::integrate::detail */
