@@ -67,11 +67,11 @@ project /xylose
     : requirements
         <include>src
         <library>/boost//headers
-        <define>XYLOSE_VERSION=\\\"$(VERSION)\\\"
+        <define>XYLOSE_VERSION=$(VERSION)
     : usage-requirements
         <include>src
         <library>/boost//headers
-        <define>XYLOSE_VERSION=\\\"$(VERSION)\\\"
+        <define>XYLOSE_VERSION=$(VERSION)
     ;
 
 alias headers : : : : <include>src ;
