@@ -2,6 +2,8 @@
 #include <iostream>
 #include <fstream>
 
+inline double & localDt( double & dt );
+
 #include <xylose/power.h>
 #include <xylose/Vector.h>
 #include <xylose/integrate/rk.h>
