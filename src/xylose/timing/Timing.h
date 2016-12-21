@@ -7,25 +7,25 @@
  *      software.  This software is released under the LGPL license except
  *      otherwise explicitly stated in individual files included in this
  *      package.  Generally, the files in this package are copyrighted by
- *      Spencer Olson--exceptions will be noted.   
+ *      Spencer Olson--exceptions will be noted.
  *                 Copyright 2004-2008 Spencer Olson
  *
  * This library is free software; you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation; either version 2.1 of the
  * License, or (at your option) any later version.
- *  
+ *
  * This library is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
- *                                                                                 
+ *
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
  * USA.                                                                           .
- * 
- * Questions? Contact Spencer Olson (olsonse@umich.edu) 
+ *
+ * Questions? Contact Spencer Olson (olsonse@umich.edu)
  */
 
 /** \example timing/testtiming.cpp
@@ -41,10 +41,12 @@
 #ifndef xylose_timing_Timing_h
 #define xylose_timing_Timing_h
 
+#include <xylose/Singleton.hpp>
 #include <xylose/timing/element/Base.h>
 
 #include <boost/ptr_container/ptr_vector.hpp>
 
+#include <set>
 #include <vector>
 #include <stdexcept>
 
@@ -52,9 +54,54 @@
 namespace xylose {
   namespace timing {
 
+    class Timing;
+
+    /* Collection for Timing class instances that need/want to be incremented
+     * together. */
+    struct Collection : public Singleton<Collection> {
+      /* TYPEDEFS */
+      typedef std::set<Timing*>::iterator TIter;
+
+      /* MEMBER STORAGE */
+      std::set< Timing * > registered;
+
+      void add( Timing * t ) {
+        this->registered.insert(t);
+      }
+
+      void remove( Timing * t ) {
+        this->registered.erase(t);
+      }
+
+      size_t count( Timing * t ) {
+        return this->registered.count(t);
+      }
+
+      /** saves an absolute time on the time stack. */
+      inline void push_time(const double & t_abs) const ;
+
+      /** save current absolute time on the time stack.
+       * @return Reference to self.
+       */
+      inline void push_time() const ;
+
+      /** pop and restore an old timing value from the time stack.
+       * @return Reference to self.
+       */
+      inline void pop_time() const ;
+
+      inline void incr_time( const double & dt ) const ;
+
+      /** Set the current value of the timed change.
+       * @param t_absolute The absolute time will define which element in the
+       * time interval array is used.
+       */
+      inline void set_time(const double & t_absolute) const ;
+    };
+
     typedef boost::ptr_vector<element::Base> TimingsVector;
 
-    /** Generic timing class.  
+    /** Generic timing class.
      * This class can be used to change a particular value in a controlled
      * fashion over a given set of time intervals (defined by an array of
      * element::Base instances).
@@ -68,7 +115,7 @@ namespace xylose {
       TimingsVector timings;
 
     private:
-      /** Value of the timer. 
+      /** Value of the timer.
        * The meaning of this value is arbitrary, and the magnitude depends on
        * the particular timing element. */
       double current_val;
@@ -88,7 +135,17 @@ namespace xylose {
       Timing() : timings(),
                  current_val(0.0),
                  time_stack(),
-                 current_time_absolute(0.0) {}
+                 current_time_absolute(0.0) {
+        registry()->add(this);
+      }
+
+      ~Timing() {
+        registry()->remove(this);
+      }
+
+      static timing::Collection * registry() {
+        return timing::Collection::instance();
+      }
 
       /** Obtain the current value of the timing. */
       const double & getVal() const { return current_val; }
@@ -103,13 +160,13 @@ namespace xylose {
       }
 
       /** save current absolute time on the time stack.
-       * @return Reference to self.  
+       * @return Reference to self.
        */
       Timing & push_time() {
         return push_time(current_time_absolute);
       }
 
-      /** pop and restore an old timing value from the time stack. 
+      /** pop and restore an old timing value from the time stack.
        * @return Reference to self.
        */
       Timing & pop_time() {
@@ -125,7 +182,7 @@ namespace xylose {
 
       /** Set the current value of the timed change.
        * @param t_absolute The absolute time will define which element in the
-       * time interval array is used. 
+       * time interval array is used.
        */
       void set_time(const double & t_absolute) {
         /* set the current time for possible later use. */
@@ -153,6 +210,43 @@ namespace xylose {
         current_val = timings[i].getValue(t_absolute - t_i);
       }
     };
+
+
+    /** saves an absolute time on the time stack. */
+    inline void Collection::push_time(const double & t_abs) const {
+      for (TIter i = registered.begin(), e = registered.end(); i != e; ++i)
+        (*i)->push_time(t_abs);
+    }
+
+    /** save current absolute time on the time stack.
+     * @return Reference to self.
+     */
+    inline void Collection::push_time() const {
+      for (TIter i = registered.begin(), e = registered.end(); i != e; ++i)
+        (*i)->push_time();
+    }
+
+    /** pop and restore an old timing value from the time stack.
+     * @return Reference to self.
+     */
+    inline void Collection::pop_time() const {
+      for (TIter i = registered.begin(), e = registered.end(); i != e; ++i)
+        (*i)->pop_time();
+    }
+
+    inline void Collection::incr_time( const double & dt ) const {
+      for (TIter i = registered.begin(), e = registered.end(); i != e; ++i)
+        (*i)->incr_time(dt);
+    }
+
+    /** Set the current value of the timed change.
+     * @param t_absolute The absolute time will define which element in the
+     * time interval array is used.
+     */
+    inline void Collection::set_time(const double & t_absolute) const {
+      for (TIter i = registered.begin(), e = registered.end(); i != e; ++i)
+        (*i)->set_time(t_absolute);
+    }
 
   }/* namespace xylose::timing */
 }/* namespace xylose */
