@@ -805,7 +805,10 @@ namespace xylose {
   /** Stream input operator. */
   template <typename T, unsigned int L>
   inline std::istream & operator>> (std::istream & input, Vector<T,L> & v) {
-    for (unsigned int i = 0; i < L; ++i) input >> v[i];
+    for (unsigned int i = 0; i < L; ++i) {
+      input >> std::ws;
+      input >> v[i];
+    }
     return input;
   }
 
