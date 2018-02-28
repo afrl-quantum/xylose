@@ -46,7 +46,7 @@ plot \
 
 pause -1;
 
-set title "dt_step used\nin solution to x\"(t) = -k*x - k/10 * sin(wp * t)"
+set title "dt_{step} used\nin solution to x\"(t) = -k*x - k/10 * sin(wp * t)"
 plot \
     'out.dat' u 1:8  w lp    t 'RK Solution'
 
