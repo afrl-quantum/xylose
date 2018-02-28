@@ -77,8 +77,14 @@ namespace xylose {
       /* ensure that dt and dt_step have the same sign */
       dt_step = copysign(dt_step,dt);
 
-      double  t = ti;
       double tf = ti + dt;
+      if ( ti == tf ) {
+        std::ostringstream ostr;
+        ostr << "stepsize underflow in rk5 at t,dt = " << ti << ',' << dt;
+        throw std::runtime_error( ostr.str() );
+      }
+
+      long double tr = 0; /* relative position in timestep. */
 
       /* direction of integration. */
       const double dir = copysign(1.0,dt);
@@ -90,7 +96,7 @@ namespace xylose {
       int     truncated_step = 0;
       const double TINY = 1e-30;
 
-      const double eps = std::numeric_limits<double>::epsilon();
+      const long double eps = std::numeric_limits<long double>::epsilon();
       /** The 1.0 + minimum fraction of total current time to allow stepping. */
       const double TIME_COMP_EPS = 1.0 + ( 10.0 * eps );
 
@@ -99,10 +105,10 @@ namespace xylose {
        * complete and the truncated_step will cause a very very tiny
        * timestep that causes timestep underrun.  We are just going to throw
        * away anytiming that is as close as 10*eps*t. */
-      while ( (t*dir*TIME_COMP_EPS) <  (tf*dir) ) {
-        if ( ((t+dt_step)*dir) > (tf*dir) ) {
-           // If stepsize can overshoot, decrease.
-          dt_step = copysign(tf-t,dt);
+      while ( (tr*dir*TIME_COMP_EPS) <  (dt*dir) ) {
+        if ( ((tr+dt_step)*dir) > (dt*dir) ) {
+          // If stepsize can overshoot, decrease.
+          dt_step = copysign(dt-tr,dt);
 
           truncated_step = 1;
         } else {
@@ -110,32 +116,19 @@ namespace xylose {
         }
 
         dt_step_current = dt_step;
-        rkTweak.first( x, t, (const double&)dt_step_current, dt_step,
+        rkTweak.first( x, ti + tr, (const double&)dt_step_current, dt_step,
                        other, derivs );
 
-        derivs(x, t, dt_step, dxdt, other);
+        derivs(x, ti + tr, dt_step, dxdt, other);
 
-        for (unsigned int i = 0; i < ndim; i++) {
+        for (unsigned int i = 0; i < ndim; ++i) {
           /* Scaling used to monitor accuracy. This
            * general-purpose choice can be modified if need be. */
           x_cal[i] = std::abs(x[i]) + std::abs( dt_step*dxdt[i] ) + TINY;
         }
 
         // time is accumulated in this function
-        double told = t;
-        rkqs(x, dxdt, t, dt_step, x_cal, dt_step_current, tf, other);
-
-
-        if(std::abs(t - told) <= std::abs(t*1.5*eps)) {
-          //std::stringstream ostr;
-          //ostr << "stepsize underrun (" << dt_step_current
-          //                              << " truncated=="<< truncated_step
-          //                              << ", tried "<< dt_step
-          //                              << ", next "<< dt_step_next ")"
-          //        "at pos ("<<x<<") "
-          //        "at t ("<<t<<"; old:"<<told<<") to tf ("<<tf<<")",
-          throw std::runtime_error("stepsize underrun ("+to_string(dt_step)+")");
-        }
+        rkqs(x, dxdt, ti, tr, dt_step, x_cal, dt_step_current, tf, other);
 
         /* Allow user to provide a call back to adjust the next time step if
          * needed.
@@ -149,7 +142,7 @@ namespace xylose {
          * time-step/2.0:  one before the call to derivs at the beginning
          * of the while loop and one right here.
          */
-        rkTweak.second( x, t, (const double&)dt_step_current, dt_step,
+        rkTweak.second( x, ti + tr, (const double&)dt_step_current, dt_step,
                         other, derivs );
 
         if ( truncated_step == 0 || std::abs(dt_step) < std::abs(dt_step_current)) {
@@ -170,7 +163,8 @@ namespace xylose {
                typename Other >
     void RK<DxDt,5u,RKTweak>::rkqs(       Vector<double,ndim> & p,
                                     const Vector<double,ndim> & dpdt,
-                                          double & t,
+                                    const double & ti,
+                                          long double & tr,
                                           double & dt_try,
                                     const Vector<double,ndim> & p_scal,
                                           double & dt_did,
@@ -192,7 +186,7 @@ namespace xylose {
 
       double maxerr = 0.0;
       while (true) {
-        rkck( p, dpdt, t, dt, p_tmp, p_err, other ); //   Take a step.
+        rkck( p, dpdt, ti + tr, dt, p_tmp, p_err, other ); //   Take a step.
         ++number_tries;
 
         //  Evaluate accuracy.
@@ -206,11 +200,12 @@ namespace xylose {
         double dt_temp = SAFETY * dt * fast_pow(maxerr, PSHRNK);
         dt = copysign( max(abs(dt_temp), 0.1*abs(dt) ), dt);    // No more than a factor of 10.
         // now set the absolute time
-        double tnew = t + dt;
-        if ( tnew == t ) {
+        long double trnew = tr + dt;
+        if ( trnew == tr ) {
           std::ostringstream ostr;
-          ostr << "stepsize (" << tnew << " = " << t << " + " << dt << ") underflow in rkqs at:\n"
-               << "trying to reach t_f = " << tf << '\n'
+          ostr << "stepsize (" << trnew << " = " << tr << " + " << dt
+               << ") underflow in rkqs at:\n"
+               << "trying from t_i = " << ti << " to reach t_f = " << tf << '\n'
                << "p[0:n]:  " << p;
 
           throw std::runtime_error( ostr.str() );
@@ -225,7 +220,7 @@ namespace xylose {
         dt_try = 5.0 * dt;
 
       dt_did = dt;
-      t = t + dt; // set the absolute time
+      tr += dt; // set the absolute time
       p = p_tmp;
     }
 
@@ -235,7 +230,7 @@ namespace xylose {
                typename Other >
     void RK<DxDt,5u,RKTweak>::rkck( const Vector<double,ndim> & p,
                                     const Vector<double,ndim> & D1,
-                                    const double & t,
+                                    const long double & t,
                                     const double & dt,
                                           Vector<double,ndim> & p_out,
                                           Vector<double,ndim> & p_err,

@@ -191,7 +191,8 @@ namespace xylose {
                  typename Other >
       void rkqs(       Vector<double,ndim> & p,
                  const Vector<double,ndim> & dpdt,
-                       double & t,
+                 const double & ti,
+                       long double & tr,
                        double & dt_try,
                  const Vector<double,ndim> & p_scal,
                        double & dt_did,
@@ -208,7 +209,7 @@ namespace xylose {
                  typename Other >
       void rkck( const Vector<double,ndim> & p,
                  const Vector<double,ndim> & D1,
-                 const double & t,
+                 const long double & t,
                  const double & dt,
                        Vector<double,ndim> & p_out,
                        Vector<double,ndim> & p_err,
