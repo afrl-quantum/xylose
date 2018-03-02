@@ -1,2 +1,4 @@
-exe testtiming : testtiming.cpp /xylose//headers ;
+using python : 2.7 ;
+
+exe testtiming : testtiming.cpp /xylose//headers /boost//python /python ;
 install convenient-copy : testtiming : <location>. ;
